@@ -19,7 +19,7 @@ function LoginPage() {
                 </form>
                 <hr className="my-3" />
                 <p>
-                    Already have an account? Go to <Link href="/register" className='text-blue-500 hover:underline'>Register</Link> Page
+                    Do not have an account? Go to <Link href="/register" className='text-blue-500 hover:underline'>Register</Link> Page
                 </p>
             </div>
         </div>
