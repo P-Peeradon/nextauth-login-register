@@ -47,7 +47,7 @@ function LoginPage() {
                     </div>
                 )}
 
-                <form onClick={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <input onChange={(e) => setEmail(e.target.value)} className='block bg-gray-300 p-2 my-2 rounded-md' type="email" placeholder='Enter your email' />
                     <input onChange={(e) => setPassword(e.target.value)} className='block bg-gray-300 p-2 my-2 rounded-md' type="password" placeholder='Enter your password' />
                     
