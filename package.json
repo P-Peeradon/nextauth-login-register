@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "bun --bun next dev",
+    "build": "bun --bun next build",
+    "start": "bun --bun next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "mongoose": "^9.0.2",
     "next": "16.1.1",
+    "next-auth": "^4.24.13",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
