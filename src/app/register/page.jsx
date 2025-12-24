@@ -11,6 +11,7 @@ function RegisterPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +40,7 @@ function RegisterPage() {
             if (res.ok) {
                 const form = e.target;
                 setError("");
+                setSuccess("User registration successfully!")
                 form.reset();
             }
         } catch (error) {
@@ -58,6 +60,12 @@ function RegisterPage() {
                     {error && (
                         <div className='bg-red-500 w-fit text-sm text-white py-1 px-3 rounded-md mt-2'>
                             {error}
+                        </div>
+                    )}
+
+                    {success && (
+                        <div className='bg-green-500 w-fit text-sm text-white py-1 px-3 rounded-md mt-2'>
+                            {success}
                         </div>
                     )}
 
