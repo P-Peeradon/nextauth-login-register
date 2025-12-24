@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 function RegisterPage() {
 
@@ -12,6 +14,9 @@ function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+
+    const { data: session } = useSession
+    if (session) redirect('welcome')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -67,7 +72,7 @@ function RegisterPage() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar session={session} />
             <div className='container mx-auto py-5'>
                 <h3>Register Page</h3>
                 <hr className='my-3' />

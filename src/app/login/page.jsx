@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
-import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter, redirect } from 'next/navigation'
 
 function LoginPage() {
 
@@ -12,7 +12,9 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const router = useRouter()
+    const router = useRouter();
+    const { data: session } = useSession();
+    if (session) redirect('welcome');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ function LoginPage() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar session={session} />
             <div className='container mx-auto py-5'>
                 <h3>Login Page</h3>
                 <hr className='my-3' />
