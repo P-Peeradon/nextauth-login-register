@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
+import Link from 'next/link'
 
 function LoginPage() {
     return (
@@ -16,6 +17,10 @@ function LoginPage() {
                     
                     <button type="submit" className='bg-green-500 p-2 rounded-md'>Sign In</button>
                 </form>
+                <hr className="my-3" />
+                <p>
+                    Already have an account? Go to <Link href="/register" className='text-blue-500 hover:underline'>Register</Link> Page
+                </p>
             </div>
         </div>
     )
