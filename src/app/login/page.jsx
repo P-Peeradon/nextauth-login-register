@@ -3,12 +3,36 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 function LoginPage() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const router = useRouter()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            
+            const res = await signIn("credentials", {
+                email, password, redirect: false
+            });
+
+            if (res.error) {
+                setError("Invalid credentials");
+                return;
+            }
+
+            router.replace("welcome");
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
@@ -23,7 +47,7 @@ function LoginPage() {
                     </div>
                 )}
 
-                <form action="">
+                <form onClick={handleSubmit}>
                     <input onChange={(e) => setEmail(e.target.value)} className='block bg-gray-300 p-2 my-2 rounded-md' type="email" placeholder='Enter your email' />
                     <input onChange={(e) => setPassword(e.target.value)} className='block bg-gray-300 p-2 my-2 rounded-md' type="password" placeholder='Enter your password' />
                     
