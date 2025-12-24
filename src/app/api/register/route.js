@@ -8,7 +8,7 @@ export async function POST(req) {
         console.log("Email: ", email);
         console.log("Password: ", password);
 
-        return NextResponse.json({ message: "User registered."}, { status: 200 })
+        return NextResponse.json({ message: "User registered."}, { status: 201 })
     } catch (error) {
         return NextResponse.json({ message: "An error occured why registering the user"}, { status: 500 })
     }
